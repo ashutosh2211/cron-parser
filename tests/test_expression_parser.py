@@ -20,6 +20,6 @@ class TestParser:
                              [("1 0 1 *,* * /usr", True), ("1 0 1 * /usr", False),
                               ("", False), ("1 0 1  2  * du", True)])
     def test_validate_expression(self, expression, expected, expression_parser_fixture: ExpressionParser):
-        is_valid, _ = expression_parser_fixture._validate_expression(expression)
+        is_valid = expression_parser_fixture._validate_expression(expression)
 
         assert is_valid == expected

@@ -21,34 +21,35 @@ class ExpressionParser:
         self._config = config_obj
         self._output_formatter = output_formatter
 
-    def _validate_expression(self, expression: str):
-        expression_parts = []
-
+    def _validate_expression(self, expression: str) -> bool:
         if not expression:
-            return False, expression_parts
+            return False
 
         replaced_expr = _RE_COMBINE_WHITESPACE.sub(" ", expression).strip()
 
         if not replaced_expr:
-            return False, expression_parts
+            return False
 
         expression_parts = replaced_expr.split(" ")
 
         if len(expression_parts) < 6:
-            return False, expression_parts
+            return False
 
-        return True, expression_parts
+        return True
 
     def parse_and_display(self, expression: str):
-        is_valid, split_expression = self._validate_expression(expression)
+        is_valid = self._validate_expression(expression)
 
         if not is_valid:
             raise InvalidExpression(expression)
 
+        replaced_expr = _RE_COMBINE_WHITESPACE.sub(" ", expression).strip()
+        split_expression = replaced_expr.split(" ")
+
         cron_expression = split_expression[:-1]
         cron_command = split_expression[-1]
 
-        cron_field_names: List[CronFieldName] = [f for f in CronFieldName]
+        cron_field_names: List[CronFieldName] = [_field for _field in CronFieldName]
 
         cron_fields: List[CronFieldAttribute] = self._parse_cron_expression(cron_expression, cron_field_names)
         cron_field_output_list: List[CronFieldOutput] = self._parse_cron_fields(cron_fields)
