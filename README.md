@@ -26,6 +26,7 @@ command        /usr/bin/find
 ```
 ---
 ## How to run
+The code is written for a python environment with a version of 3.7 or higher.
 ```
 ➜ cd cron-parser
 ➜ [cron-parser] pip install poetry==1.1.13
