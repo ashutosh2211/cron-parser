@@ -36,4 +36,16 @@ class TestStarParser:
         with pytest.raises(InvalidFieldValue) as exc:
             res = parser_obj.parse(cron_field)
 
+    def test_parse_invalid_bounds(self):
+        parser_obj = StarParser()
 
+        cron_field = CronFieldAttribute(
+            CronFieldName.HOUR,
+            CronFieldType.RANGE,
+            "*/2",
+            None,
+            None
+        )
+
+        with pytest.raises(InvalidFieldValue) as exc:
+            res = parser_obj.parse(cron_field)
