@@ -27,6 +27,14 @@ command        /usr/bin/find
 ---
 ## How to run
 The code is written for a python environment with a version of 3.7 or higher.
+
+To install python:
+```shell
+➜ brew install pyenv
+➜ pyenv install 3.7.0
+```
+
+To run the cli:
 ```
 ➜ cd cron-parser
 ➜ [cron-parser] pip install poetry==1.1.13
@@ -35,13 +43,13 @@ The code is written for a python environment with a version of 3.7 or higher.
 ```
 ### Example
 ```shell
-➜ [cron-parser] poetry run python parser.py "10-49/10 6-10/2 * 1-10/2 3,4 /usr/bin/find"
-minute                   10 20 30 40
-hour                     6 8 10
-day of month             1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31
-month                    1 3 5 7 9
-day of week              3 4
-command                  /usr/bin/find
+➜ [cron-parser] poetry run python parser.py "10-49/10 6-10 */2 1,10 3,4,5 /usr/bin/find"
+minute         10 20 30 40
+hour           6 7 8 9 10
+day of month   1 3 5 7 9 11 13 15 17 19 21 23 25 27 29 31
+month          1 10
+day of week    3 4 5
+command        /usr/bin/find
 ```
 ---
 ### Run tests
