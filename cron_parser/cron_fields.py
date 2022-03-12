@@ -17,7 +17,7 @@ class CronFieldType(Enum):
     NUMERIC = re.compile(r"^[0-9]+$", )
     RANGE = re.compile(r"^[0-9]+-[0-9]+$")
     STEP = re.compile(r"^([0-9]+-[0-9]+|\*|[0-9]+)/([0-9]+)$")
-    LIST = re.compile(r"^[0-9\*\-\/]+,[0-9\*\-\/]+$")
+    LIST = re.compile(r"^[0-9\*\-\/]+[,0-9\*\-\/]+$")
 
 
 @dataclass

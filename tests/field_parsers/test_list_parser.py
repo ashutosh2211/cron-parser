@@ -22,6 +22,21 @@ class TestListParser:
 
         assert res == [2, 5]
 
+    def test_parse_with_multiple_values(self):
+        parser_obj = ListParser()
+
+        cron_field = CronFieldAttribute(
+            CronFieldName.HOUR,
+            CronFieldType.RANGE,
+            "2,5,7",
+            0,
+            23
+        )
+
+        res = parser_obj.parse(cron_field)
+
+        assert res == [2, 5, 7]
+
     def test_parse_out_of_bounds(self):
         parser_obj = ListParser()
 
