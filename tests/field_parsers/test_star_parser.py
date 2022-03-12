@@ -42,10 +42,12 @@ class TestStarParser:
         cron_field = CronFieldAttribute(
             CronFieldName.HOUR,
             CronFieldType.RANGE,
-            "*/2",
+            "*",
             None,
             None
         )
 
         with pytest.raises(InvalidFieldValue) as exc:
             res = parser_obj.parse(cron_field)
+
+        assert f"Field range is not present for field: {cron_field.field_name.name}" in str(exc.value)

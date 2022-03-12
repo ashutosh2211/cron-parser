@@ -36,6 +36,9 @@ class TestListParser:
         with pytest.raises(InvalidFieldValue) as exc:
             res = parser_obj.parse(cron_field)
 
+        assert f"Field value: 31 for field: {cron_field.field_name.name} " \
+               f"is not in allowed range: {cron_field.min} - {cron_field.max}" == str(exc.value)
+
     def test_parse_invalid_expression(self):
         parser_obj = ListParser()
 
