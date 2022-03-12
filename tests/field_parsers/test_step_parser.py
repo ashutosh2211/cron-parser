@@ -50,3 +50,19 @@ class TestRangeParser:
         res = parser_obj.parse(cron_field)
 
         assert res == [18, 20, 22]
+
+    def test_parse_invalid_step_value(self):
+        parser_obj = StepParser()
+
+        cron_field = CronFieldAttribute(
+            CronFieldName.HOUR,
+            CronFieldType.RANGE,
+            "18",
+            0,
+            23
+        )
+
+        with pytest.raises(InvalidFieldValue) as exc:
+            res = parser_obj.parse(cron_field)
+
+        assert f"Invalid field value: 18 for field: {cron_field.field_name.name}" == str(exc.value)
