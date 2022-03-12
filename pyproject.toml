@@ -4,6 +4,11 @@ version = "0.1.0"
 description = "Cron parser"
 authors = ["ash <ashu.banerjee.2289@gmail.com>"]
 
+packages = [
+    { include = "cron_parser" },
+    { include = "tests", format = "sdist" },
+]
+
 [tool.poetry.dependencies]
 python = "^3.7"
 PyYAML = "^6.0"
