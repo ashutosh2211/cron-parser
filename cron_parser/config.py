@@ -16,7 +16,7 @@ class Config(object):
         if config_file is None:
             raise ValueError()
 
-        assert os.path.exists(config_file)
+        assert os.path.exists(config_file), f"Config file not present at path: {config_file}"
 
         Config._CONFIG_FILE = config_file
         with open(config_file, 'r') as f:
