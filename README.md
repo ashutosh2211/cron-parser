@@ -27,7 +27,7 @@ command        /usr/bin/find
 ---
 ## How to run
 ```
-➜  cd cron-parser
+➜ cd cron-parser
 ➜ [cron-parser] pip install poetry==1.1.13
 ➜ [cron-parser] poetry install
 ➜ [cron-parser] poetry run python parser.py "<cron_expression>"
@@ -45,13 +45,13 @@ command                  /usr/bin/find
 ---
 ### Run tests
 ```
-➜  cd cron-parser
+➜ cd cron-parser
 ➜ [cron-parser] poetry run pytest
 ```
 
 ### Run coverage
 ```
-➜  cd cron-parser
+➜ cd cron-parser
 ➜ [cron-parser] poetry run coverage run -m pytest
 ➜ [cron-parser] poetry run coverage report
 ```
