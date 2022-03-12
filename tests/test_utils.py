@@ -33,3 +33,8 @@ class Testutils:
     def test_is_string_numeric(self, value, expected):
         res = is_string_numeric(value)
         assert res == expected
+
+    @pytest.mark.parametrize("value, expected", [([[1], [2, 3], [4]], [1, 2, 3, 4]), ([[1, 2, 3]], [1, 2, 3]), ([[]], [])])
+    def test_flatten_lists(self, value, expected):
+        res = flatten_lists(value)
+        assert res == expected

@@ -1,7 +1,7 @@
 from typing import List
 
 
-def create_range_inclusive(minimum: int, maximum: int) -> List[str]:
+def create_range_inclusive(minimum: int, maximum: int) -> List[int]:
     """
     Creates a list of values between a given range including the lower and upper bound
     :param minimum: Lower bound for the range
@@ -46,3 +46,12 @@ def is_string_numeric(val: str) -> bool:
         return False
 
     return True
+
+
+def flatten_lists(lists: List[List]) -> List:
+    """
+    Flattens a list of list to a single level
+    :param lists: list of lists
+    :return: flattened list
+    """
+    return [val for sublist in lists for val in sublist]
