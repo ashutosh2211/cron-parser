@@ -49,3 +49,20 @@ class TestRangeParser:
 
         with pytest.raises(InvalidFieldValue) as exc:
             res = parser_obj.parse(cron_field)
+
+    def test_parse_inverted_range(self):
+        parser_obj = RangeParser()
+
+        cron_field = CronFieldAttribute(
+            CronFieldName.HOUR,
+            CronFieldType.RANGE,
+            "11-3",
+            0,
+            23
+        )
+
+        with pytest.raises(InvalidFieldValue) as exc:
+            res = parser_obj.parse(cron_field)
+
+        assert f"Field value: 11-3 for field: {cron_field.field_name.value} " \
+                      f"is not in allowed range: {cron_field.min} - {cron_field.max}" == str(exc.value)

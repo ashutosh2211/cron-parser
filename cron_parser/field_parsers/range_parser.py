@@ -35,7 +35,7 @@ class RangeParser(FieldParser):
         range_min = convert_str_to_int(start)
         range_max = convert_str_to_int(end)
 
-        if not is_in_range_inclusive(range_min, cron_field.min, cron_field.max) \
+        if range_min > range_max or not is_in_range_inclusive(range_min, cron_field.min, cron_field.max) \
                 or not is_in_range_inclusive(range_max, cron_field.min, cron_field.max):
             err_msg = f"Field value: {field_val} for field: {field_name.value} " \
                       f"is not in allowed range: {cron_field.min} - {cron_field.max}"
