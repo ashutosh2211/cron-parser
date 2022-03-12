@@ -49,6 +49,13 @@ command                  /usr/bin/find
 ➜ [cron-parser] poetry run pytest
 ```
 
+### Run coverage
+```
+➜  cd cron-parser
+➜ [cron-parser] poetry run coverage run -m pytest
+➜ [cron-parser] poetry run coverage report
+```
+
 ---
 ## Cases not covered
 - We have not considered the month and day of week names such as `jan`, `feb` or `mon` while building the parser.
