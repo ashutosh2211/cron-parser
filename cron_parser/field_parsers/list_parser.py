@@ -42,7 +42,7 @@ class ListParser(FieldParser):
         if not is_in_range_inclusive(range_min, cron_field.min, cron_field.max) \
                 or not is_in_range_inclusive(range_max, cron_field.min, cron_field.max):
 
-            err_msg = f"Field value: {field_val} for field: {field_name.name} " \
+            err_msg = f"Field value: {field_val} for field: {field_name.value} " \
                       f"is not in allowed range: {cron_field.min} - {cron_field.max}"
             logger.error(err_msg)
             raise InvalidFieldValue(err_msg)

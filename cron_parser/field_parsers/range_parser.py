@@ -1,3 +1,4 @@
+import logging
 from typing import List
 
 import cron_parser.field_parsers.cron_field_parser_factory as parser_factory
@@ -6,6 +7,9 @@ from cron_parser.exceptions import InvalidFieldValue
 from cron_parser.field_parsers.field_parser import FieldParser
 from cron_parser.field_parsers.numeric_parser import NumericParser
 from cron_parser.utils import is_in_range_inclusive, convert_str_to_int, create_range_inclusive
+
+logger = logging.getLogger(__file__)
+logging.basicConfig(level=logging.INFO)
 
 
 class RangeParser(FieldParser):
@@ -17,8 +21,9 @@ class RangeParser(FieldParser):
         values = field_val.split("-")
 
         if len(values) != 2:
-            raise InvalidFieldValue(
-                f"Field value: {field_val} for field: {field_name.value} does not follow the syntax for range")
+            err_msg = f"Invalid field value: {field_val} for field: {field_name.value}, does not follow the syntax for range"
+            logger.error(err_msg)
+            raise InvalidFieldValue(err_msg)
 
         for val in values:
             cron_type = CronFieldType.NUMERIC
@@ -32,7 +37,9 @@ class RangeParser(FieldParser):
 
         if not is_in_range_inclusive(range_min, cron_field.min, cron_field.max) \
                 or not is_in_range_inclusive(range_max, cron_field.min, cron_field.max):
-            raise InvalidFieldValue(
-                f"Field value for field: {field_name.value} is not in allowed range: {cron_field.min} - {cron_field.max}")
+            err_msg = f"Field value: {field_val} for field: {field_name.value} " \
+                      f"is not in allowed range: {cron_field.min} - {cron_field.max}"
+            logger.error(err_msg)
+            raise InvalidFieldValue(err_msg)
 
         return create_range_inclusive(range_min, range_max)

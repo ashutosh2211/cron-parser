@@ -17,7 +17,7 @@ class NumericParser(FieldParser):
 
             if not is_in_range_inclusive(field_val_int, cron_field.min, cron_field.max):
                 raise InvalidFieldValue(
-                    f"Field value: {field_val} for field: {field_name.name} is not in allowed range: {cron_field.min} - {cron_field.max}")
+                    f"Field value: {field_val} for field: {field_name.value} is not in allowed range: {cron_field.min} - {cron_field.max}")
             return [field_val_int]
 
         raise InvalidFieldValue(f"{field_val} is not a valid field value for field: {field_name.value}")
