@@ -6,7 +6,7 @@ from cron_parser.formatters.output_formatter import OutputFormatter
 
 class StringFormatter(OutputFormatter):
 
-    def __init__(self, spacing=25):
+    def __init__(self, spacing=15):
         self._spacing = spacing
 
     def format(self, cron_field_outputs: List[CronFieldOutput], cron_command: str) -> str:
