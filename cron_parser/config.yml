@@ -1,0 +1,16 @@
+fields:
+  - field_name: 'MINUTE'
+    min: 0
+    max: 59
+  - field_name: 'HOUR'
+    min: 0
+    max: 23
+  - field_name: 'DAY_OF_MONTH'
+    min: 1
+    max: 31
+  - field_name: 'MONTH'
+    min: 1
+    max: 12
+  - field_name: 'DAY_OF_WEEK'
+    min: 0
+    max: 6
