@@ -1,4 +1,5 @@
 from cron_parser.cron_fields import CronFieldType
+import cron_parser.field_parsers.list_parser as list_parser
 import cron_parser.field_parsers.numeric_parser as numeric_parser
 import cron_parser.field_parsers.range_parser as range_parser
 import cron_parser.field_parsers.star_parser as star_parser
@@ -17,3 +18,5 @@ class CronFieldParserFactory:
             return range_parser.RangeParser()
         elif cron_field_type == CronFieldType.STEP:
             return step_parser.StepParser()
+        elif cron_field_type == CronFieldType.LIST:
+            return list_parser.ListParser()
